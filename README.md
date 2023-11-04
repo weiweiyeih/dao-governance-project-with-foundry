@@ -1,66 +1,66 @@
-## Foundry
+# DAO Governance Project with Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This GitHub repository contains smart contracts written in Solidity with [Foundry](https://getfoundry.sh/) for a decentralized governance system. The repository includes the following contracts, which extend the [OpenZeppelin contracts 5.x](https://docs.openzeppelin.com/contracts/5.x/governance):
 
-Foundry consists of:
+- **GovernanceToken.sol**: This contract represents an ERC20 token with additional features for voting and permit. It allows token holders to participate in governance processes.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **Box.sol**: This contract allows the owner to store and retrieve a single unsigned integer value.
 
-## Documentation
+- **GovernorContract.sol**: This contract is basically configured with the [Openzeppelin Wizard](https://docs.openzeppelin.com/contracts/5.x/wizard). It provides a comprehensive governance solution, including voting, vote counting, vote quorum, timelock control, and proposal management functionalities.
 
-https://book.getfoundry.sh/
+- **TimeLock.sol**: This contract allows for the execution of proposals with a minimum delay and provides control over who can propose and execute proposals.
 
-## Usage
+## Table of Content
 
-### Build
+- [DAO Governance Project with Foundry](#dao-governance-project-with-foundry)
+- [Getting Started](#getting-started)
+  - [Requirements](#requirements)
+  - [Quickstart](#quickstart)
+- [Usage](#usage)
+  - [Test](#test)
+  - [Deploy](#deploy)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-```shell
-$ forge build
+# Getting Started
+
+## Requirements
+
+- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [foundry](https://getfoundry.sh/)
+
+## Quickstart
+
+```bash
+git clone https://github.com/weiweiyeih/dao-governance-project-with-foundry.git
+forge install
+forge build
 ```
 
-### Test
+# Usage
 
-```shell
-$ forge test
+## Test
+
+```
+forge test -vv
 ```
 
-### Format
+## Deploy
 
-```shell
-$ forge fmt
+This will default to your local Anvil node. You need to have it running in another terminal in order for it to deploy.
+
+```
+forge script script/DeployDaoBox.s.sol:DeployDaoBox --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) --broadcast
 ```
 
-### Gas Snapshots
+# License
 
-```shell
-$ forge snapshot
-```
+This project is licensed under the MIT License.
 
-### Anvil
+# Acknowledgments
 
-```shell
-$ anvil
-```
+- https://github.com/PatrickAlphaC/dao-template/tree/main
 
-### Deploy
+- https://github.com/ThomasHeim11/Foundry-DAO-Governance/tree/main
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- https://docs.openzeppelin.com/contracts/5.x/governance
